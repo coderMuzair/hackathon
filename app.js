@@ -110,9 +110,9 @@ onAuthStateChanged(auth, (user) => {
     }
     // ...
   } else {
-    window.location.href = "./index.html"
+    // window.location.href = "./index.html"
     // ...
-    getDatafromDBwithoutsignin();
+    // getDatafromDBwithoutsignin();
 
   }
 });
@@ -241,25 +241,27 @@ async function deleteDatafromDB(){
 //////...............Profile Page................//////
 const imageInput = document.getElementById('imageInput');
 const preview = document.getElementById('preview');
-
-imageInput.addEventListener('change', function() {
-  const file = imageInput.files[0];
-
-  if (file) {
-    const reader = new FileReader();
-
-    reader.addEventListener('load', function() {
-      const image = new Image();
-      image.src = reader.result;
-      image.style.maxWidth = '100%';
-      image.style.maxHeight = '300px';
-      preview.innerHTML = ''; // Clear previous preview
-      preview.appendChild(image);
-    });
-
-    reader.readAsDataURL(file);
-  }
-});
+if(imageInput){
+  imageInput.addEventListener('change', function() {
+    const file = imageInput.files[0];
+  
+    if (file) {
+      const reader = new FileReader();
+  
+      reader.addEventListener('load', function() {
+        const image = new Image();
+        image.src = reader.result;
+        image.style.maxWidth = '100%';
+        image.style.maxHeight = '300px';
+        preview.innerHTML = ''; // Clear previous preview
+        preview.appendChild(image);
+      });
+  
+      reader.readAsDataURL(file);
+    }
+  });
+  
+}
 
 
 
